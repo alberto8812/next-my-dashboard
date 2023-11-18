@@ -1,5 +1,6 @@
-import { PokemonsGrid, PokemonsResponse,SimplePokemon } from "@/app/pokemons";
-import Image from 'next/image'
+
+import { PokemonsGrid, PokemonsResponse, SimplePokemon } from '@/pokemons';
+
 
 
 
@@ -12,6 +13,8 @@ const getPokemon =async( limit=20,offset=0):Promise<SimplePokemon[]>=>{
     id:Pokemon.url.split('/').at(-2)!,
     name:Pokemon.name
   }))
+
+  // throw new Error("paso algo con la carga")
 
   return Pokemons;
 }
