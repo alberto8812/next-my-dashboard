@@ -1,8 +1,22 @@
+import { SimpleWidget, WigetsGrid } from "@/components";
+
+
+
+export const metadata = {
+ title: 'Admin Dashboard',
+ description: 'SEO title',
+};
 
 export default function MainPage() {
   return (
-    <div>
-      <h1>Hello Page</h1>
+    <div className="text-black p-2">
+      <h1 className="mt-2 text-3xl">Dashboard</h1>
+      <span className=" text-xl">informacion general</span>
+
+
+       <WigetsGrid/>     
+
+      
     </div>
   );
 }
