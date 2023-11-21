@@ -1,4 +1,6 @@
 import { Sidebar } from "@/components";
+import { Providers } from "@/store/Providers";
+
 
 export default function DasboardLayout({
  children
@@ -13,7 +15,9 @@ export default function DasboardLayout({
 
 
         <div className="p-2 w-full text-slate-900">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
         </div>
     </div>
     </div>

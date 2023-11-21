@@ -24,6 +24,12 @@ const meneItems=[
         title:'Pokemon',
         subtitle:'Pokemon page '
     },
+    {
+        path:'/dashboard/favorites',
+        icon:<CgPokemon  size={40}/>,
+        title:'Pokemon favorito',
+        subtitle:'Pokemon favorito page '
+    },
 ]
 
 
