@@ -1,4 +1,11 @@
-import { SimpleWidget } from "@/components";
+import { SimpleWidget, WigetsGrid } from "@/components";
+
+
+
+export const metadata = {
+ title: 'Admin Dashboard',
+ description: 'SEO title',
+};
 
 export default function MainPage() {
   return (
@@ -6,11 +13,9 @@ export default function MainPage() {
       <h1 className="mt-2 text-3xl">Dashboard</h1>
       <span className=" text-xl">informacion general</span>
 
-      <div className="flex flex-wrap  p-2 ml-2">
-       <SimpleWidget/>
-      
-      
-      </div>
+
+       <WigetsGrid/>     
+
       
     </div>
   );

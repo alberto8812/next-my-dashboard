@@ -7,14 +7,29 @@ import { addOne, initCounterState, resetCount, substractOne } from '@/store/coun
 interface Props{
     value?:number,
 }
+
+export interface CounterResponse{
+  method:string;
+  count:number;
+}
+
+const getApiCounter=async():Promise<CounterResponse>=>{
+  const data =await fetch('/api/counter').then(res=>res.json());
+  return data
+} 
+
 export const CartCounter:FC <Props> = ({value=0}) => {
   const {count}=useAppSelector(state=>state.counterReducer); 
   const dispatch=useAppDispatch();
 
-  useEffect(() => {
-    dispatch(initCounterState(value))
-  }, [])
+  // useEffect(() => {
+  //   dispatch(initCounterState(value))
+  // }, [])
 
+    useEffect(() => {
+      getApiCounter().then( ({count})=>dispatch(initCounterState(count)))
+
+  }, [dispatch])
 
 
   return (

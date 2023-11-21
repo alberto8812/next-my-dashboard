@@ -3,6 +3,8 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 interface CounterState {
     count:number;
     isReady:boolean;
+  
+    
 }
 
 const initialState:CounterState = {
