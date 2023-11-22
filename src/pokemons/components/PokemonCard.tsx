@@ -1,8 +1,12 @@
+'use client'
 import Link from 'next/link'
 import React, { FC } from 'react'
 import { SimplePokemon } from '..'
 import Image from 'next/image'
-import { IoHeartOutline } from 'react-icons/io5'
+import { IoHeart, IoHeartOutline } from 'react-icons/io5'
+import { useAppDispatch, useAppSelector } from '@/store'
+import { toggleFavorite } from '@/store/pokemon/pokemons'
+
 
 interface Props{
     pokemon:SimplePokemon
@@ -10,6 +14,14 @@ interface Props{
 
 export const PokemonCard:FC <Props> = ({pokemon}) => {
     const {name,id}=pokemon;
+    const dispatch=useAppDispatch()
+    
+    const isfavorite=useAppSelector(state=>!!state.pokemons[id])
+
+    const onToggle=()=>{
+        dispatch(toggleFavorite(pokemon))
+    }
+
   return (
     <div className="mx-auto right-0 mt-2 w-60">
                 <div className="bg-white rounded overflow-hidden shadow-lg">
@@ -37,19 +49,30 @@ export const PokemonCard:FC <Props> = ({pokemon}) => {
                     </div>
                     </div>
                     <div className="border-b">
-                        <Link href="/dashboard/main" className="px-4 py-2 hover:bg-gray-100 flex items-center">
+                        <div  
+                        className="px-4 py-2 hover:bg-gray-100 flex items-center cursor-pointer"
+                        onClick={onToggle}
+                        >
                         
                                 <div className="text-red-600">
-                                    <IoHeartOutline/>
+                                    {
+                                        isfavorite? <IoHeart/>:<IoHeartOutline/>
+                                    }
+                                    {/* <IoHeartOutline/> */}
+                                   
                                 </div>
                                 <div className="pl-3">
                                 <p className="text-sm font-medium text-gray-800 leading-none">
-                                    No es favorito
+                                   {
+                                    isfavorite?
+                                    'Es favorito':
+                                    'No es favorito'
+                                   }
                                 </p>
                                 <p className="text-xs text-gray-500">View your campaigns</p>
                                 </div>
                         
-                        </Link>
+                        </div>
 
                     </div>
 
